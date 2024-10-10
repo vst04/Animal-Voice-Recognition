@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Animal Sound Recognition</title>
+    <style>
+        /* CSS styles */
+        body {
+            font-family: Arial, sans-serif;
+            background-image: url('../static/images/image.png');
+            background-size: cover;
+            margin: 0;
+            padding: 0;
+        }
+        .container {
+            max-width: 1000px; /* Increased container width */
+            margin: 100px auto; /* Increased margin */
+            padding: 20px;
+            background-color: rgba(255, 255, 255, 0.8); /* Transparent background */
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            position: relative;
+        }
+        h1 {
+            margin-bottom: 20px;
+        }
+        #logo {
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            width: 55px;
+        }
+        .uploadBtn, .predictBtn, .uploadLabel {
+            background-color: #2a2e32;
+            color: #fff;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+            margin-bottom: 10px;
+            display: inline-block;
+       
+        }
+        #audioInput {
+            opacity: 0;
+            position: absolute;
+            cursor: pointer;
+        }
+        .animalImages {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            margin-top: 20px;
+        }
+        .animalContainer {
+            margin: 10px;
+            width: calc(25% - 20px); /* Adjust to fit 4 animals per row */
+            transition: transform 0.3s ease;
+        }
+        .animalContainer:hover {
+            transform: translateY(-5px);
+        }
+        .animalContainer img {
+            width: 100%;
+            height: auto;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            cursor: pointer;
+        }
+        .animalContainer span {
+            display: block;
+            margin-top: 10px;
+            font-size: 18px;
+        }
+        .predictionResult {
+            margin-top: 20px;
+            font-size: 20px;
+            font-weight: bold;
+        }
+        .file-upload-form {
+            margin: 20px auto; /* Center the form */
+            width: fit-content;
+            height: fit-content;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border: 0px dashed rgb(82, 82, 82);
+            border-radius: 40px;
+            cursor: pointer;
+            position: relative;
+        }
+        .file-upload-label input {
+            display: none;
+        }
+        .file-upload-label svg {
+            height: 40px;
+            fill: rgb(82, 82, 82);
+            margin-bottom: 10px;
+        }
+        .file-upload-label {
+            cursor: pointer;
+            background-color: #ddd;
+            padding: 20px 60px;
+            border-radius: 40px;
+            border: 2px dashed rgb(82, 82, 82);
+            box-shadow: 0px 0px 200px -50px rgba(0, 0, 0, 0.719);
+        }
+        .file-upload-design {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            gap: 5px;
+        }
+        .browse-button {
+            background-color: rgb(82, 82, 82);
+            padding: 5px 15px;
+            border-radius: 10px;
+            color: white;
+            transition: all 0.3s;
+        }
+        .browse-button:hover {
+            background-color: rgb(14, 14, 14);
+        }
+        .about-us {
+            margin-top: 50px;
+            padding: 20px;
+            background-color: rgba(230, 230, 230, 0.9);
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            text-align: center;
+        }
+        .contact-details {
+            margin-top: 20px;
+            font-size: 16px;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Animal Voice Recognition</h1>
+        <form class="file-upload-form" id="fileUploadForm" enctype="multipart/form-data">
+            <label for="file" class="file-upload-label" id="fileUploadLabel">
+                <div class="file-upload-design">
+                    <svg viewBox="0 0 640 512" height="1em">
+                        <path
+                            d="M144 480C64.5 480 0 415.5 0 336c0-62.8 40.2-116.2 96.2-135.9c-.1-2.7-.2-5.4-.2-8.1c0-88.4 71.6-160 160-160c59.3 0 111 32.2 138.7 80.2C409.9 102 428.3 96 448 96c53 0 96 43 96 96c0 12.2-2.3 23.8-6.4 34.6C596 238.4 640 290.1 640 352c0 70.7-57.3 128-128 128H144zm79-217c-9.4 9.4-9.4 24.6 0 33.9s24.6 9.4 33.9 0l39-39V392c0 13.3 10.7 24 24 24s24-10.7 24-24V257.9l39 39c9.4 9.4 24.6 9.4 33.9 0s9.4-24.6 0-33.9l-80-80c-9.4-9.4-24.6-9.4-33.9 0l-80 80z"
+                        ></path>
+                    </svg>
+                    <p>Drag and Drop</p>
+                    <p>or</p>
+                    <span class="browse-button">Browse file</span>
+                </div>
+                <input id="file" type="file" />
+            </label>
+        </form>
+        
+        <img id="logo" src="../static/images/logo.png" alt="Logo">
+        <button type="button" class="predictBtn" onclick="predictAnimal()">Predict</button>
+        <div id="predictionResult" class="predictionResult"></div>
+        <div class="animalImages">
+            <div class="animalContainer">
+                <a href="{{ url_for('cat_page') }}"><img src="../static/images/cat.jpg" alt="Cat"></a>
+                <span>Cat</span>
+            </div>
+            <div class="animalContainer">
+                <a href="{{ url_for('chicken_page') }}"><img src="../static/images/chicken.png" alt="Chicken"></a>
+                <span>Chicken</span>
+            </div>
+            <div class="animalContainer">
+                <a href="{{ url_for('cow_page') }}"><img src="../static/images/cow.jpg" alt="Cow"></a>
+                <span>Cow</span>
+            </div>
+            <div class="animalContainer">
+                <a href="{{ url_for('dog_page') }}"><img src="../static/images/dog.jpg" alt="Dog"></a>
+                <span>Dog</span>
+            </div>
+            <div class="animalContainer">
+                <a href="{{ url_for('eagle_page') }}"><img src="../static/images/eagle.png" alt="Eagle"></a>
+                <span>Eagle</span>
+            </div>
+            <div class="animalContainer">
+                <a href="{{ url_for('goat_page') }}"><img src="../static/images/goat.jpg" alt="Goat"></a>
+                <span>Goat</span>
+            </div>
+            <div class="animalContainer">
+                <a href="{{ url_for('elephant_page') }}"><img src="../static/images/elephant.jpg" alt="Elephant"></a>
+                <span>Elephant</span>
+            </div>
+            <div class="animalContainer">
+                <a href="{{ url_for('human_page') }}"><img src="../static/images/human.png" alt="Human"></a>
+                <span>Human</span>
+            </div>
+        </div>    
+    </div>
+    
+    <div class="about-us">
+        <h2>About Us</h2>
+        <p>We are dedicated to providing innovative solutions for animal sound recognition. Our technology helps in identifying various animal sounds accurately and efficiently. Our mission is to support research and development in the field of bioacoustics and to offer practical applications for wildlife monitoring and conservation.</p>
+    </div>
+    
+    
+    
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            var form = document.getElementById("fileUploadForm");
+            var fileInput = document.getElementById("file");
+
+            form.addEventListener("dragenter", function(e) {
+                e.preventDefault();
+                e.stopPropagation();
+                form.classList.add("highlight");
+            });
+
+            form.addEventListener("dragover", function(e) {
+                e.preventDefault();
+                e.stopPropagation();
+                form.classList.add("highlight");
+            });
+
+            form.addEventListener("dragleave", function(e) {
+                e.preventDefault();
+                e.stopPropagation();
+                form.classList.remove("highlight");
+            });
+
+            form.addEventListener("drop", function(e) {
+                e.preventDefault();
+                e.stopPropagation();
+                form.classList.remove("highlight");
+                var file = e.dataTransfer.files[0];
+                fileInput.files = e.dataTransfer.files;
+            });
+
+            fileInput.addEventListener("change", function() {
+                var fileName = fileInput.value.split("\\").pop();
+                var label = document.getElementById("fileUploadLabel");
+                label.querySelector("span").innerText = fileName;
+            });
+        });
+
+        function predictAnimal() {
+            var formData = new FormData();
+            formData.append('audio', document.getElementById('file').files[0]);
+            $.ajax({
+                type: 'POST',
+                url: '/predict',
+                data: formData,
+                contentType: false,
+                processData: false,
+                success: function(response) {
+                    if (response.prediction.toLowerCase() === 'unidentified voice') {
+                        $('#predictionResult').text('Prediction: Unidentified Voice');
+                    } else {
+                        var predictedAnimal = response.prediction.toLowerCase();
+                        window.location.href = '/' + predictedAnimal;
+                    }
+                },
+                error: function(xhr, status, error) {
+                    var errorMessage = xhr.status + ': ' + xhr.statusText;
+                    alert('Error - ' + errorMessage);
+                }
+            });
+        }
+    </script>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Unknown Animal</title>
+    <style>
+        /* CSS styles */
+        body {
+            font-family: Arial, sans-serif;
+            background-image: url('../static/images/image.png'); /* Background image */
+            background-size: cover; /* Ensure it covers the entire background */
+            background-repeat: no-repeat; /* No repeating the image */
+            background-position: center; /* Center the image */
+            margin: 0;
+            padding: 0;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 50px auto;
+            padding: 20px;
+            background-color: rgba(255, 255, 255, 0.8); /* Transparent background */
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            position: relative; /* Needed for positioning the logo absolutely */
+        }
+
+        #logo {
+            position: absolute;
+            top: 10px;
+            left: 10px;
+            width: 50px; /* Width of the logo, adjust as necessary */
+            height: auto; /* Maintain aspect ratio */
+        }
+
+        h1 {
+            margin-bottom: 20px;
+        }
+
+        .animal-image {
+            width: 300px;
+            height: 300px;
+            border-radius: 50%;
+            margin-bottom: 20px;
+        }
+
+        p {
+            margin-bottom: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <img id="logo" src="../static/images/logo.png" alt="Logo"> <!-- Logo -->
+        <h1>Unknown Animal</h1>
+        <img class="animal-image" src="../static/images/unknown.jpg" alt="Unknown Animal">
+        <p>We couldn't identify the animal from the sound.</p>
+        <p>Please try again or choose another animal.</p>
+    </div>
+</body>
+</html>
+

@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cow Page</title>
+    <style>
+        /* CSS styles for the page */
+        body {
+            font-family: Arial, sans-serif;
+            background-image: url('../static/images/image.png'); /* Set the background image */
+            background-size: cover; /* Cover the full view */
+            background-repeat: no-repeat; /* Do not repeat the image */
+            background-position: center; /* Center the image on the page */
+            margin: 0;
+            padding: 0;
+        }
+        .container {
+            max-width: 800px;
+            margin: 50px auto;
+            padding: 20px;
+            background-color: rgba(255, 255, 255, 0.9); /* Slightly transparent white background */
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            text-align: center; /* Center-align all content within the container */
+            position: relative; /* Necessary for absolute positioning of the logo */
+        }
+        #logo {
+            position: absolute;
+            top: 10px;
+            left: 10px;
+            width: 55px; /* Adjust to match the dimensions from index.html */
+        }
+        h1 {
+            text-align: center; /* Center-align the main heading */
+            margin-top: 60px; /* Increase top margin to accommodate logo */
+            margin-bottom: 20px; /* Increased margin for better spacing */
+        }
+        h2 {
+            text-align: left; /* Left-align secondary headings */
+            margin-top: 20px;
+            margin-bottom: 10px;
+        }
+        .animal-image {
+            width: 300px;
+            height: 300px;
+            border-radius: 50%;
+            display: block;
+            margin: 20px auto; /* Center the image and provide some margin for spacing */
+        }
+        p {
+            text-align: justify;
+            margin: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <img id="logo" src="../static/images/logo.png" alt="Logo">
+        <h1>Cow</h1>
+        <img class="animal-image" src="../static/images/cow.jpg" alt="Cow">
+        
+        <h2>Origin and Habitat:</h2>
+        <p>Cows, also known as cattle, are domesticated members of the Bovidae family. They are found worldwide, often in grasslands, farmlands, and pastures where they are raised for their milk, meat, and hides.</p>
+        
+        <h2>Physical Traits:</h2>
+        <p>Cows are large, herbivorous animals characterized by their sturdy bodies, cloven hooves, and often distinctive coat patterns. They possess a complex digestive system with four stomach compartments, enabling them to efficiently process fibrous plant material.</p>
+        
+        <h2>Behavior:</h2>
+        <p>Cows are social animals that form strong bonds within their herds. They communicate through vocalizations, body language, and even pheromones. As ruminants, they spend a significant amount of time grazing and ruminating to aid digestion.</p>
+        
+        <h2>Lifespan:</h2>
+        <p>The average lifespan of a cow is around 15 to 20 years, though this can vary depending on factors such as breed, living conditions, and purpose (dairy or meat production).</p>
+    </div>
+</body>
+</html>
+

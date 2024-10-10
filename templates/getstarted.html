@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Get Started</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #fff4e6; /* Adjust to match your images */
+            background-image: url('../static/images/background.jpg'); /* Path to your background image */
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            margin: 0;
+            padding: 0;
+            overflow: hidden;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background: linear-gradient(to bottom right, #fff4e6, #ffe4c4); /* Adjust to match your images */
+        }
+
+        .container {
+            text-align: center;
+            position: relative;
+        }
+        h1 {
+            font-family: 'Times New Roman', Times, serif; /* Applying Times New Roman font */
+            font-size: 3em;
+            color: #333;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+            margin-bottom: 20px;
+        }
+
+        .image-container {
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+            width: 90%; /* Increased width to fit larger images */
+            position: relative;
+        }
+
+        .image-container img {
+            width: 200px; /* Increased width as needed */
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
+            filter: blur(0);
+            opacity: 0;
+            position: relative;
+            transition: all 1.5s ease;
+        }
+
+        .image-container img:nth-child(1) {
+            transform: translateY(-100%);
+            animation: slideInFromTop 1.5s ease forwards 0.5s;
+        }
+
+        .image-container img:nth-child(2) {
+            transform: translateY(100%);
+            animation: slideInFromBottom 1.5s ease forwards 1s;
+        }
+
+        .image-container img:nth-child(3) {
+            transform: translateY(-100%);
+            animation: slideInFromTop 1.5s ease forwards 1.5s;
+        }
+
+        @keyframes slideInFromTop {
+            to {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+
+        @keyframes slideInFromBottom {
+            to {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+
+        .get-started-button {
+            background-color: #4CAF50;
+            border: none;
+            color: white;
+            padding: 15px 32px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 16px;
+            cursor: pointer;
+            border-radius: 5px;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
+            transition: all 0.3s ease;
+            margin-top: 20px;
+        }
+
+        .get-started-button:hover {
+            background-color: #45a049;
+            transform: scale(1.1);
+            box-shadow: 0 0 30px rgba(0, 0, 0, 0.7);
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Animal Voice Recognition</h1>
+        <div class="image-container">
+            <img src="../static/images/image1.png" alt="Image 1">
+            <img src="../static/images/image2.png" alt="Image 2">
+            <img src="../static/images/image3.png" alt="Image 3">
+        </div>
+        <button class="get-started-button" id="get-started-button">Get Started</button>
+    </div>
+    <script>
+        document.getElementById('get-started-button').addEventListener('click', function() {
+            window.location.href = '/index';
+        });
+    </script>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dog Page</title>
+    <style>
+        /* CSS styles for the page */
+        body {
+            font-family: Arial, sans-serif;
+            background-image: url('../static/images/image.png'); /* Background image */
+            background-size: cover; /* Ensure it covers the entire background */
+            background-repeat: no-repeat; /* No repeating the image */
+            background-position: center; /* Center the image */
+            margin: 0;
+            padding: 0;
+        }
+        .container {
+            max-width: 800px;
+            margin: 50px auto;
+            padding: 20px;
+            background-color: #fff;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            text-align: center; /* Center-align all content within the container */
+            position: relative; /* Needed for positioning the logo absolutely */
+        }
+        #logo {
+            position: absolute;
+            top: 10px;
+            left: 10px;
+            width: 50px; /* Width of the logo, adjust as necessary */
+            height: auto; /* Maintain aspect ratio */
+        }
+        h1 {
+            padding-top: 60px; /* Add padding to prevent overlap with logo */
+            margin-bottom: 20px;
+        }
+        h2 {
+            text-align: left;
+            margin-top: 20px;
+            margin-bottom: 10px;
+        }
+        .animal-image {
+            width: 300px;
+            height: 300px;
+            border-radius: 50%;
+            display: block;
+            margin: 20px auto;
+        }
+        p {
+            text-align: justify;
+            margin: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <img id="logo" src="../static/images/logo.png" alt="Logo">
+        <h1>Dog</h1>
+        <img class="animal-image" src="../static/images/dog.jpg" alt="Dog">
+        
+        <h2>Origin and Habitat:</h2>
+        <p>Dogs, also known as Canis familiaris, are domesticated descendants of wolves. They have adapted to live alongside humans in various environments worldwide, from urban settings to rural landscapes.</p>
+        
+        <h2>Physical Traits:</h2>
+        <p>Dogs come in a wide variety of shapes, sizes, and colors due to extensive breeding. They have a strong sense of smell, sharp hearing, and are often characterized by their loyalty and trainability. Their physical appearance can range from small breeds like Chihuahuas to large breeds like Great Danes.</p>
+        
+        <h2>Behavior:</h2>
+        <p>Dogs are known for their companionship and loyalty to humans. They are social animals, often forming strong bonds with their owners. They exhibit a range of behaviors including playfulness, protectiveness, and sometimes herding instincts. Training and socialization are key to managing their behavior.</p>
+        
+        <h2>Lifespan:</h2>
+        <p>On average, dogs live for 10 to 13 years, though this can vary significantly depending on the breed, size, and health of the dog. Smaller breeds tend to live longer than larger breeds.</p>
+    </div>
+</body>
+</html>
+
